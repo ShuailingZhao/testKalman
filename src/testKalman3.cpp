@@ -36,15 +36,15 @@ int main (int argc, char** argv)
 	help();
 	const int stateNum=4;                                      //状态值4×1向量(x,y,vx,vy) (x,y,△x,△y)
 	const int measureNum=2;                                    //测量值2×1向量(x,y)
-	const int controlNum=4;				          //控制量4x1向量ax,ay,ax,ay
+	const int controlNum=4;				           //控制量4x1向量ax,ay,ax,ay
 	const double initDeltaTime = 0.2;
 	//1.初始化kalman对象
 	POSITIONKALMANFILTER::positionKalmanFilter kF(stateNum, measureNum, controlNum, initDeltaTime);
     
 	
 	cv::namedWindow("kalman");
-	cv::setMouseCallback("kalman",mouseEvent);
-	cv::Mat image(winHeight,winWidth,CV_8UC3,cv::Scalar(0));
+	cv::setMouseCallback("kalman", mouseEvent);
+	cv::Mat image(winHeight, winWidth, CV_8UC3, cv::Scalar(0));
  
 	while (1)
 	{
