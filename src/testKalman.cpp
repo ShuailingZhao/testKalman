@@ -34,7 +34,7 @@ int main (int argc, char** argv)
 {
 	help();
 
-	POSITIONKALMANFILTER::positionKalmanFilter kf(4,2,1,0.2);
+//	POSITIONKALMANFILTER::positionKalmanFilter kf(4,2,1,0.2);
 	RNG rng;
 	//1.kalman filter setup
 	const int stateNum=4;                                      //状态值4×1向量(x,y,△x,△y)
@@ -42,7 +42,7 @@ int main (int argc, char** argv)
 	KalmanFilter KF(stateNum, measureNum, 0);	
  
 //	KF.transitionMatrix = (Mat_<float>(4, 4)<<1,0,1,0,0,1,0,1,0,0,1,0,0,0,0,1);  //转移矩阵A
-	KF.transitionMatrix = (Mat_<float>(4, 4)<<1,0,0.2,0,0,1,0,0.2,0,0,1,0,0,0,0,1);  //转移矩阵A
+	KF.transitionMatrix = (Mat_<float>(4, 4)<<1,0,0.2,0,0,1,0,0.2,0,0,1,0,0,0,0,1);  //转移矩阵A，状态转移，从前一个状态到下一个状态的转换矩阵
 	setIdentity(KF.measurementMatrix);                                             //测量矩阵H
 	setIdentity(KF.processNoiseCov, Scalar::all(1e-5));                            //系统噪声方差矩阵Q
 	setIdentity(KF.measurementNoiseCov, Scalar::all(1e-1));                        //测量噪声方差矩阵R
