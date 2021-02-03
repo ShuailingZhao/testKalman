@@ -26,7 +26,7 @@ cmake .. && make -j4
 ./testKalman2
 ```
 
-#### testKalman3 模块化的kalman滤波测试
+#### testKalman3 更紧凑的模块化的kalman滤波测试
 模块化的测试，功能和testKalman2一样
 ```
 cd build
