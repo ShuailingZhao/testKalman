@@ -36,7 +36,7 @@ namespace POSITIONKALMANFILTER
 		return kF.correct(measureM);
 	}
 	
-	cv::Point2f positionKalmanFilter::getFilterData(const cv::Point2f mousePosition, const float deltaTime, const float ax, const float ay)
+	cv::Mat positionKalmanFilter::getFilterData(const cv::Point2f mousePosition, const float deltaTime, const float ax, const float ay)
 	{
 		//2.重新时间间隔，更新转换矩阵和控制矩阵
 		reSetupTransitionMatrixAndControlMatrix(deltaTime);//更新转换矩阵和控制矩阵
@@ -52,10 +52,9 @@ namespace POSITIONKALMANFILTER
 		measurement.at<float>(1) = (float)mousePosition.y;
  
 		//5.update
-		cv::Mat fusion = correctStateCovarianceAndGain(measurement);
-		cv::Point2f fusion_pt = cv::Point2f(fusion.at<float>(0),fusion.at<float>(1) );   //预测值(x',y')
+		cv::Mat fusion = correctStateCovarianceAndGain(measurement);		
 		
-		return fusion_pt;
+		return fusion;
 	}
 	
 	

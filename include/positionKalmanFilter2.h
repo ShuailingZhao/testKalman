@@ -11,7 +11,7 @@ namespace POSITIONKALMANFILTER
 			bool reSetupTransitionMatrixAndControlMatrix(const float deltaTime);
 			cv::Mat predictStateAndCovariance(const cv::Mat control);
 			cv::Mat correctStateCovarianceAndGain(const cv::Mat measurement);
-			cv::Point2f getFilterData(const cv::Point2f mousePosition, const float deltaTime = 0.2, const float ax = 0.0, const float ay = 0.0);
+			cv::Mat getFilterData(const cv::Point2f mousePosition, const float deltaTime = 0.2, const float ax = 0.0, const float ay = 0.0);
 		
 		private:
 			cv::KalmanFilter kF;

@@ -52,7 +52,8 @@ int main (int argc, char** argv)
 		float deltaTime = 0.2;//每帧间隔的时间
 		float ax = 0.0;
 		float ay = 0.0;
-		cv::Point2f fusion_pt = kF.getFilterData(mousePosition, deltaTime, ax, ay);
+		cv::Mat fusion = kF.getFilterData(mousePosition, deltaTime, ax, ay);
+		cv::Point2f fusion_pt = cv::Point2f(fusion.at<float>(0),fusion.at<float>(1) );   //预测值(x',y')
  
 		//draw 
 		image.setTo(cv::Scalar(255,255,255,0));
